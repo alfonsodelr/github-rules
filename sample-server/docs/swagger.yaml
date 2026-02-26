@@ -1,0 +1,23 @@
+basePath: /
+info:
+  contact: {}
+  description: Sample server with Swagger docs.
+  title: Sample Server API
+  version: "1.0"
+paths:
+  /version:
+    get:
+      consumes:
+      - application/json
+      description: Processes the version request and returns a response.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Handler response
+          schema:
+            type: string
+      summary: Handle version request
+      tags:
+      - version
+swagger: "2.0"
