@@ -15,12 +15,17 @@ import (
 	httpSwagger "github.com/swaggo/http-swagger"
 )
 
-func main() {
-	http.HandleFunc("/version", handlers.HandlerVersionRequest)
+func newMux() *http.ServeMux {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/version", handlers.HandlerVersionRequest)
 
 	// Swagger UI at http://localhost:8080/swagger/index.html
-	http.Handle("/swagger/", httpSwagger.WrapHandler)
+	mux.Handle("/swagger/", httpSwagger.WrapHandler)
 
+	return mux
+}
+
+func main() {
 	fmt.Println("Server running on http://localhost:8080")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080", newMux())
 }
