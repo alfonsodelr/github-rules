@@ -1,7 +1,7 @@
 .PHONY: build run swagger
 
 build:
-	go build -o bin/server ./...
+	go build -o bin/server .
 
 run:
 	go run main.go
