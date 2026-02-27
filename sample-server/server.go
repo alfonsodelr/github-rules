@@ -7,6 +7,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	_ "github.com/alfonsodelr/sample-server/docs"
@@ -27,5 +28,7 @@ func newMux() *http.ServeMux {
 
 func main() {
 	fmt.Println("Server running on http://localhost:8080")
-	http.ListenAndServe(":8080", newMux())
+	if err := http.ListenAndServe(":8080", newMux()); err != nil {
+		log.Fatal(err)
+	}
 }

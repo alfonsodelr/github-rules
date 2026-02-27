@@ -1,10 +1,13 @@
-.PHONY: build run swagger
+.PHONY: build run swagger lint
 
 build:
 	go build -o bin/server .
 
 run:
 	go run main.go
+
+lint:
+	golangci-lint run ./...
 
 swagger:
 	swag init -g main.go --output docs/
@@ -16,5 +19,6 @@ help:
 	@echo "Targets:"
 	@echo "  build    - Build the server binary"
 	@echo "  run      - Run the server"
+	@echo "  lint     - Run golangci-lint"
 	@echo "  swagger  - Generate Swagger documentation"
 	@echo "  all      - Generate Swagger documentation and build the server"
