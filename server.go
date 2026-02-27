@@ -28,6 +28,7 @@ func newMux() *http.ServeMux {
 
 func main() {
 	fmt.Println("Server running on http://localhost:8080")
+	fmt.Println("Swagger docs available at http://localhost:8080/swagger/index.html")
 	if err := http.ListenAndServe(":8080", newMux()); err != nil {
 		log.Fatal(err)
 	}
